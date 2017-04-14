@@ -5,11 +5,6 @@ www.liligi.com
 MIT License
 */
 
-// Initialize a Gumshoe object (preferably in an MVC bootstrap module), construct with table name and column names
-// enter search arguments with search method
-// Retrieve prepared statement with '$gumshoe->statement'
-// Retrieve arg array for prepared statement with '$gumshoe->args'
-
 namespace gumshoe;
 
 final class Gumshoe{
