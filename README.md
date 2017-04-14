@@ -11,4 +11,4 @@ Gumshoe is licensed under the [MIT License](https://opensource.org/licenses/MIT)
 # Documentation
 Documentation, usage instructions, and demo can be found here:    
 
-[Gumshoe documentation](https://ligipop.github.io/gumshoe/) 
+[Gumshoe documentation](https://ligipop.github.io/Gumshoe.php/) 
