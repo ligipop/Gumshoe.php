@@ -1,0 +1,102 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Gumshoe</title>
+		<meta charset = "utf-8"/>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>	
+		<link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,700" rel="stylesheet"> 
+		<link href="https://fonts.googleapis.com/css?family=Monofett" rel="stylesheet"> 
+		<link rel="stylesheet" type="text/css" href="css/styles.css"> 
+
+	</head>
+
+	<body>
+		<a class ="github_banner" target="_blank" href="https://github.com/ligipop/Gumshoe.php"><img style="position: fixed; top: 0; right: 0; border: 0; z-index:3;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+			
+		<div id="main_container">	
+			<div id="container_overlay">
+				<div id="page_col">
+					<h1>Gumshoe</h1>
+					<h2>A tiny PHP tool for generating SQL wildcard PDO prepared statements for RDBMS.</h2>
+				</div>
+			</div>
+			<div id="body">
+				<div id="body_cont">
+					<h3>When utilizing something like enhanced 'for' or 'foreach' loops to iterate through arrays of multiple user submitted inputs prepped for an SQL wildcard database search, the length of the PDO prepared statement must change. This can prove a tedious task. Gumshoe.php is a dynamic tool that automates the process, and generates a prepared statement as well as its final input argument array.</h3>
+
+					<h2>Download</h2>
+					<h3>Download package files from <a href="https://github.com/ligipop/Gumshoe.php" target="_blank"> Github.</a></h3>
+
+					<h2>Installation</h2>
+					<h3>Include the Gumshoe.php file in your document:</h3>
+<pre>
+<code class="code_snippet prettyprint">include 'path/to/Gumshoe.php';
+</code>
+</pre>
+
+					<h3>You can also autoload the Gumshoe class:</h3>
+<pre>
+<code class="code_snippet prettyprint">spl_autoload_register(function($class){
+	include 'gumshoe_dir/Gumshoe.php'			
+});
+</code>
+</pre>
+
+					<h2>Usage</h2>
+					<h3>Create a new Gumshoe instance. Gumshoe instances require two arguments:<br><br>1) The name of the table from which your prepared statement will be retrieving data. This must be a string.<br>
+					2) The column names in the aforementioned table in which you will match the statement's wildcards. This must be an array type:</h3>
+<pre>
+<code class="code_snippet prettyprint">$gumshoe = new Gumshoe('myTable',['column1','column2','column3']);
+</code>
+</pre>				
+					<h3>Use the 'search' method to enter the strings you are searching for. The search method takes one array as an argument:</h3>	
+<pre>
+<code class="code_snippet prettyprint">$gumshoe->search(['strings','to','search','for']);
+</code>
+</pre>
+					<h3>Retrieve the completed prepared statement with the 'statement' method:</h3>
+<pre>
+<code class="code_snippet prettyprint">$gumshoe->statement();
+</code>
+</pre>
+					<h3>Retrieve the completed input array for the prepared statement with the 'args' method:</h3>
+<pre>
+<code class="code_snippet prettyprint">$gumshoe->args();
+</code>
+</pre>
+					<h2>An Example:</h2>
+<pre>
+<code class="code_snippet prettyprint">$gumshoe = new Gumshoe('myTable',['myColumn']);
+$gumshoe->search(['search','me']);
+$gumshoe->statement();  // SELECT * FROM myTable WHERE myColumn LIKE ? OR myColumn LIKE ?
+$gumshoe->args();  // [%search%,%me%]
+</code>
+</pre>		
+
+					<h3>The statement can be prepared and its arguments executed:</h3>
+
+<pre>
+<code class="code_snippet prettyprint">$stmt = $this->pdo->prepare($gumshoe->statement());
+$stmt->execute($gumshoe->args());
+</code>
+</pre>		
+
+					<h2>Compatibility</h2>
+					<h3>Gumshoe.php is compatible with any server that supports PHP 5.6+ and most relational databases.</h3>
+
+					<h2>License</h2>
+					<h3>Licensed under the <a href="https://github.com/ligipop/Gumshoe.php/blob/master/LICENSE.md" target="_blank">MIT License.</a></h3><br>
+					<h3>Copyright © 2017 Li George</h3>
+
+				</div>
+			</div>
+		</div>
+
+
+
+		<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+			
+	</body>
+</html>
