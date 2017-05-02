@@ -25,10 +25,10 @@ body{
 
 h1{
 	font-family:'Monofett',cursive;
-	font-size:4.5em;
+	font-size:4em;
 	color:#ff9800;
 	padding:0;
-	margin:0;
+	margin:1%;
 }
 
 h2{
@@ -65,7 +65,7 @@ pre{
 	line-height:1.7em;
 	background-color:white;
 	margin:4% auto;
-	width:450px;
+	width:100%;
 	border-radius:5px;
 	text-align:left;
 	padding:1%;
@@ -86,6 +86,10 @@ code.code_snippet{
 	font-size:0.9em;
 }
 
+.github_banner{
+	display:none;
+}
+
 #main_container{
 	display:-ms-flex;
 	display:-webkit-flex;
@@ -97,10 +101,16 @@ code.code_snippet{
 }
 
 #container_overlay{
-	width:33.3%;
+	width:100%;
 	background-image: url("../img/overlay-3.png");
-	padding:100px 4% 4% 4%;
+	padding:50px 4%;
 	vertical-align:top;
+}
+
+h2.tagline{
+	width:100%;
+	font-size:0.95em;
+	margin:8% 6% 0 2%;
 }
 
 #body_cont{
@@ -108,7 +118,7 @@ code.code_snippet{
 	padding-top:100px;
 	line-height:1.7em;
 	word-spacing:0.2em;
-	width:60%;
+	width:70%;
 }
 
 #body_cont h2{
@@ -118,15 +128,69 @@ code.code_snippet{
 #page_col{
 	width:100%;
 	font-size:16px;
+	margin:0 auto;
 }
 
 #body{
-	width:60%;
+	width:100%;
 	font-size:16px;
 }
 
 
+/* Media Queries */
 
+/* Tablets */
+@media only screen and (min-width: 40.063em) and (max-width:64em){
+	.github_banner{
+		display:inline-block;
+	}
+
+	h1{
+		font-size:4.5em;
+	}
+
+	pre{
+		width:450px;
+	}
+
+	h2.tagline{
+		margin: 3% 6% 0 2%;
+	}
+
+	.container_overlay{
+		text-align:left;
+		padding:100px 4% 4% 4%;
+	}
+
+	#body_cont{
+		width:400px;
+	}
+
+}
+
+
+/* Large screens */
+@media only screen and (min-width: 64.063em) and (max-width: 90em){
+	
+	h1{
+		padding-top:50px;
+	}
+
+	#container_overlay{
+		width:33.3%;
+		text-align:left;
+	}
+
+
+	#body{
+		width:60%;
+		font-size:16px;
+	}
+
+	#body_cont{
+		width:60%;
+	}
+}
 
 
 
